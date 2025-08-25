@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background-color: #3CF0C5;
+        }
+        .tab{
+            max-width: 600px;
+            margin: auto;
+        }
+        .tabs-buttons{
+            display: flex;
+        }
+        .tabs-btn{
+            flex: 1;
+            padding: 10px;
+            border-top-left-radius:20px;
+            border-bottom-right-radius: 20px;
+            cursor: pointer;
+            background: greenyellow;
+            border: solid 1px transparent;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .tabs-btn:hover{
+            background: #ddd;
+        }
+        .tabs-btn.active {
+            background: rgb(252, 90, 90);
+            border-bottom: 2px solid #007BFF;
+            font-weight: bold;
+        }
+        .tab-content{
+            display: none;
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            background: linear-gradient(-35deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5)white;
+            border: solid 1px gray;
+            border-top: none;
+        }
+        .tab-content.active{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tabs-buttons">
+            <button class="tabs-btn active" data-tab="tab1">Tab 1</button>
+            <button class="tabs-btn" data-tab="tab2">Tab 2</button>
+            <button class="tabs-btn" data-tab="tab3">Tab 3</button>
+            <button class="tabs-btn" data-tab="tab4">Tab 4</button>
+        </div>
+
+        <div class="tab-content active" id="tab1">
+            <h2>Content for Tab 1</h2>
+            <p>This is the first tab's content.</p>
+        </div>
+        <div class="tab-content" id="tab2">
+            <h2>Content for Tab 2</h2>
+            <p>This is the first tab's content.</p>
+        </div>
+        <div class="tab-content" id="tab3">
+            <h2>Content for Tab 3</h2>
+            <p>This is the first tab's content.</p>
+        </div>
+        <div class="tab-content" id="tab4">
+            <h2>Content for Tab 4</h2>
+            <p>This is the first tab's content.</p>
+        </div>
+    </div>
+    <script>
+        const tabs = document.querySelectorAll('.tabs-btn');
+        const tab_content = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(button=>{
+            button.addEventListener('click',()=>{
+
+                tabs.forEach(btn=>btn.classList.remove('active'));
+                tab_content.forEach(content=>content.classList.remove('active'));
+
+                button.classList.add('active');
+
+                const Id = button.getAttribute('data-tab');
+                document.getElementById(Id).classList.add('active');
+            })
+        })
+
+    </script>
+</body>
+</html>
